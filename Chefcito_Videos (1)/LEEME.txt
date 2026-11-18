@@ -1,0 +1,45 @@
+Para esta actualización de diseño, empezá por ACTUALIZAR-CHEFCITO.txt.
+Este documento conserva la guía de activación del análisis de videos.
+
+CHEFCITO - ANALISIS DE VIDEOS PASO A PASO
+
+ACTUALIZACION PARA TU SITIO EXISTENTE
+1. En Supabase > SQL Editor > New query, pegá todo activar-videos.sql y tocá Run.
+   Conserva tus recetas y fotos; agrega notas de análisis, trabajos y videos privados.
+   configurar-supabase.sql es el archivo anterior: no hace falta volver a ejecutarlo.
+2. En Vercel > chefcito > Settings > Environment Variables, debe estar GEMINI_API_KEY en Production.
+   No pongas esa clave en GitHub, HTML ni JavaScript del navegador.
+   Opcional: GEMINI_MODEL. Por defecto usa gemini-2.5-flash.
+3. Extraé el ZIP. Dentro de GitHub > Chefcito > Add file > Upload files:
+   arrastrá index.html, cuenta.js, video.js, vercel.json Y la carpeta api completa.
+   Debe quedar api/analyze-video.js dentro de api, no en la raíz.
+   Reemplazá los archivos anteriores y tocá Commit changes.
+4. En Vercel esperá el despliegue Ready. Framework: Other, Root Directory: ./, sin comando de build.
+   La función requiere Fluid compute con duración máxima de 300 segundos.
+5. Abrí https://chefcito-tau.vercel.app, recargá e ingresá.
+6. Tocá el hornito, elegí categoría y un video MP4, MOV o WebM de hasta 10 MB y 3 minutos.
+7. Tocá Analizar receta. El video se envía a Gemini para analizar imagen, sonido y texto.
+8. Revisá ingredientes, pasos, marcas de tiempo y puntos clave. Corregí lo que necesites y guardá.
+9. Abrí la receta: los puntos clave aparecen resaltados, también en el modo cocina.
+
+ALCANCE
+- Videos subidos del dispositivo. Aún no importa enlaces de TikTok, Instagram ni YouTube.
+- Animaciones por Postres, Platos principales, Entradas y Dips.
+- Tiempos y cantidades ausentes se marcan como No especificado; los timestamps son aproximados.
+- Borradores guardados en Análisis recientes: se muestran los últimos 5. No hace falta volver a pagar un análisis que ya terminó para revisar su resultado.
+- 5 intentos diarios por cuenta, 50 en total por proyecto, día UTC. Se cuentan desde la reserva, incluso si falla la subida o Gemini. No equivale a un límite monetario garantizado del proveedor.
+- Hasta 2 análisis simultáneos; reintenta hasta dos veces en errores temporales de Gemini. No hay una cola duradera ni proveedor alternativo en esta versión.
+- Una vez procesado, el servidor intenta borrar el archivo subido y conserva el resultado. Si el proceso se interrumpe por caída o timeout de la plataforma, puede quedar un archivo en el bucket privado chef-videos; se puede eliminar desde Supabase Storage. El video original no queda enlazado en la receta; usá las marcas de tiempo en tu copia.
+- Las fotos y el resto de las cuentas mantienen la configuración anterior.
+
+PRUEBAS
+Pasaron pruebas con servicios simulados: autenticación obligatoria, IDs inválidos, bloqueo de repetición del mismo trabajo, tamaño máximo, validación de respuesta, ausencia de receta, respuesta incompleta, extracción, limpieza de archivo, revisión editable y guardado de puntos clave, visualización de destacados y escape de texto.
+No se ejecutó una llamada real a Gemini ni se aplicó el SQL a tu base desde aquí. No se dispone de tu clave secreta. Hay que probar un video real después de publicar. La revisión visual en navegador no pudo ejecutarse en este entorno; los flujos del formulario se comprobaron con simulación DOM.
+
+SI FALLA
+- Falta configurar GEMINI_API_KEY: guardá la variable en Production y hacé un nuevo despliegue.
+- Falta ejecutar activar-videos.sql: ejecutá el SQL en el mismo proyecto Supabase usado por Chefcito.
+- API 404: verificá que exista api/analyze-video.js en GitHub y que Vercel haya completado el nuevo deploy.
+- Gemini sin cuota/saturado: esperá, revisá la cuota en Google AI Studio. Los límites del proveedor dependen de tu proyecto.
+- Modelo no disponible: elegí un modelo de Gemini con video y salida JSON disponible para tu proyecto y configuralo como GEMINI_MODEL en Vercel. Volvé a desplegar.
+- Si cambia la URL o la clave PUBLICA de Supabase, actualizá cuenta.js y api/analyze-video.js. Nunca uses service_role en el navegador.
