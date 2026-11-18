@@ -1,0 +1,44 @@
+CHEFCITO V3 — COMPRESIÓN AUTOMÁTICA DE VIDEOS
+
+ACTUALIZAR
+1. Extraé Chefcito_V3_Compresion.zip en una carpeta nueva.
+2. En GitHub, subí TODO su contenido a la raíz de Chefcito y confirmá Commit changes.
+3. Esperá el nuevo despliegue de Vercel y recargá la página.
+4. En Source deben aparecer comprimir-video.js y VERSION.txt (chefcito-v3-compresion).
+No necesitás cambiar Supabase, SQL ni GEMINI_API_KEY para esta actualización.
+Incluye también todas las mejoras de diseño de la versión anterior.
+
+USO
+Tocá el hornito > Analizar un video, elegí categoría y archivo y tocá Analizar receta.
+Antes de subir, Chefcito prepara el video. Si supera 8 MB, intenta comprimirlo
+localmente, con progreso y cancelación. Si ya es pequeño, evita recomprimirlo.
+Se admiten originales MP4, MOV y WebM de hasta 250 MB y hasta 3 minutos.
+El archivo enviado a analizar nunca debe superar 10 MB.
+
+La compresión usa las capacidades del navegador, no modifica el original y no
+solicita acceso a cámara ni micrófono. Captura el audio del propio video para
+conservar las instrucciones habladas. La salida puede ser MP4 o WebM según el
+navegador. Se ajustan resolución y bitrate manteniendo la proporción del video.
+Puede tardar aproximadamente lo que dura el video. Dejá la página visible y el
+celular desbloqueado. Salir de la app o bloquear la pantalla puede interrumpirla;
+se cancela para no enviar un archivo incompleto. Cerrar el formulario también cancela.
+
+LIMITACIONES
+- Comprimir reduce peso; no recorta videos largos. Sigue el límite de 3 minutos.
+- Los textos muy pequeños pueden perder legibilidad al reducir la resolución.
+- Si el navegador no soporta el formato o ignora el bitrate y el resultado excede
+  10 MB, se muestra el error y no se envía. Probá otro MP4 o una exportación menor.
+- Un original de hasta 10 MB puede enviarse sin recomprimir cuando no hay soporte.
+- No se reserva un intento de análisis hasta terminar la preparación del video.
+- Los servicios de análisis y sus límites diarios se mantienen sin cambios.
+
+PRUEBAS
+Pasaron pruebas con APIs multimedia simuladas: cálculo de resolución y bitrate,
+pistas de audio/video, salida MP4, original pequeño, límites, cancelación,
+fallos de decodificación, incompatibilidad y liberación de recursos.
+Se verificó en DOM simulado que solo se envía el resultado preparado, que el
+progreso aparece, que cancelar/fallar no sube el archivo y que se habilita reintentar.
+También pasaron las regresiones de navegación, perfil, recetas y análisis de videos.
+No se pudo realizar transcodificación real en Safari/Chrome desde este entorno.
+Después de publicar, probá un MP4 de más de 10 MB y menos de 3 minutos con voz:
+comprobá el tamaño informado y que el análisis incluya las instrucciones habladas.

@@ -1,3 +1,5 @@
+VERSIÓN V3: empezá por COMPRESION-LEEME.txt para instalar y usar la compresión automática.
+
 CHEFCITO — ACTUALIZACIÓN DE DISEÑO Y NAVEGACIÓN
 
 PARA ACTUALIZAR TU SITIO
@@ -7,7 +9,7 @@ PARA ACTUALIZAR TU SITIO
    index.html debe quedar en la raíz del repositorio, no dentro de otra carpeta.
    Archivos necesarios:
    index.html, cuenta.js, video.js, app.js, app.css, recetas.js,
-   manifest.webmanifest, vercel.json, assets/ y api/.
+   manifest.webmanifest, comprimir-video.js, vercel.json, assets/ y api/.
 4. Confirmá la subida con Commit changes. Esperá que Vercel termine el despliegue.
 5. Abrí https://chefcito-tau.vercel.app/ y recargá.
 

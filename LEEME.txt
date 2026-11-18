@@ -1,3 +1,5 @@
+VERSIÓN V3: empezá por COMPRESION-LEEME.txt para instalar y usar la compresión automática.
+
 Para esta actualización de diseño, empezá por ACTUALIZAR-CHEFCITO.txt.
 Este documento conserva la guía de activación del análisis de videos.
 
@@ -17,7 +19,7 @@ ACTUALIZACION PARA TU SITIO EXISTENTE
 4. En Vercel esperá el despliegue Ready. Framework: Other, Root Directory: ./, sin comando de build.
    La función requiere Fluid compute con duración máxima de 300 segundos.
 5. Abrí https://chefcito-tau.vercel.app, recargá e ingresá.
-6. Tocá el hornito, elegí categoría y un video MP4, MOV o WebM de hasta 10 MB y 3 minutos.
+6. Tocá el hornito, elegí categoría y un video MP4, MOV o WebM de hasta 250 MB y 3 minutos (se comprime antes de subir).
 7. Tocá Analizar receta. El video se envía a Gemini para analizar imagen, sonido y texto.
 8. Revisá ingredientes, pasos, marcas de tiempo y puntos clave. Corregí lo que necesites y guardá.
 9. Abrí la receta: los puntos clave aparecen resaltados, también en el modo cocina.
