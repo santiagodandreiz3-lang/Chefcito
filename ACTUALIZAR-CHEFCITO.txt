@@ -1,0 +1,62 @@
+CHEFCITO — ACTUALIZACIÓN DE DISEÑO Y NAVEGACIÓN
+
+PARA ACTUALIZAR TU SITIO
+1. Descargá y extraé el ZIP en tu computadora.
+2. Abrí tu repositorio Chefcito en GitHub. Entrá en Add file > Upload files.
+3. Arrastrá TODO EL CONTENIDO de la carpeta extraída, incluyendo assets y api.
+   index.html debe quedar en la raíz del repositorio, no dentro de otra carpeta.
+   Archivos necesarios:
+   index.html, cuenta.js, video.js, app.js, app.css, recetas.js,
+   manifest.webmanifest, vercel.json, assets/ y api/.
+4. Confirmá la subida con Commit changes. Esperá que Vercel termine el despliegue.
+5. Abrí https://chefcito-tau.vercel.app/ y recargá.
+
+Esta actualización no requiere nuevas tablas ni cambios en la base si ya ejecutaste
+configurar-supabase.sql y activar-videos.sql de las versiones anteriores.
+La foto de perfil usa el almacenamiento privado de fotos ya configurado.
+El nombre y la referencia a la foto se guardan en los metadatos de tu cuenta.
+Conservá GEMINI_API_KEY en Vercel: no hay que pegarla en ningún archivo.
+Si todavía no activaste videos, seguí los pasos de LEEME.txt.
+
+QUÉ CAMBIÓ
+- El mismo ratoncito aparece en el favicon y en el ícono de acceso desde el celular.
+- Navegación de cinco secciones, con historial y regreso al inicio sin recargas.
+- Avatar como único control de cuenta arriba a la derecha. Incluye edición de
+  nombre/foto, configuración, contraseña, sincronización y cierre de sesión.
+- Animación de bienvenida y movimiento de brazo/cuchara con guiño cada 5 segundos.
+  Se pausa con la pestaña oculta y se desactiva desde Configuración o mediante
+  la preferencia de reducir movimiento del dispositivo.
+- Nueve recetas adaptadas de Good Food: cantidades, porciones, preparación,
+  cocción, reposo, temperatura, pasos, consejos y sustituciones. Cada ficha
+  identifica su fuente y las adaptaciones. Las fotos corresponden a las recetas
+  originales y se cargan desde Good Food; si no responden aparece un marcador.
+- Estilo crema, rojo tomate, verde oliva y detalles de mantel a cuadros.
+- Se mantiene el dibujo del horno y el análisis de videos, favoritos y álbum privado.
+
+ÍCONO EN EL CELULAR
+Una vez publicada esta versión:
+- iPhone/iPad, Safari: Compartir > Agregar a pantalla de inicio.
+- Android, Chrome: menú de tres puntos > Agregar a pantalla principal / Instalar.
+El nombre exacto puede variar con la versión del navegador.
+Si tenías un acceso anterior, quitá ese acceso y agregalo otra vez para renovar el ícono.
+La aplicación requiere internet para cargar los servicios, guardar datos y analizar videos.
+
+COMPROBACIÓN DESPUÉS DE PUBLICAR
+1. Probá los cinco botones y el botón Atrás del navegador.
+2. Ingresá, abrí el avatar y cambiá tu nombre y foto. Cerrá sesión y volvé a ingresar.
+3. Guardá una receta, abrí el modo cocina y avanzá entre pasos.
+4. Subí una foto desde Mis platos y verificá que siga al volver a ingresar.
+5. Probá un video corto desde Agregar y guardá el análisis después de revisarlo.
+6. En el celular, revisá que los cinco botones entren completos, incluido en horizontal.
+
+VERIFICACIONES REALIZADAS
+Se comprobaron los flujos con DOM y servicios simulados: navegación, búsqueda,
+separación de secciones, sincronización sin cambiar de página, acceso al álbum,
+menú de perfil, guardado del nombre, configuración, cierre de sesión, fichas
+completas, modo cocina, revisión/guardado de análisis y protección del texto.
+También pasaron las pruebas simuladas del servidor de análisis: autenticación,
+límites, repetición de trabajos, respuestas incompletas y limpieza de archivos.
+El SVG del hornito y el servidor de análisis se compararon con la versión anterior
+sin cambios. No se modificaron tus datos remotos.
+No se pudo ejecutar una revisión visual en navegador real en este entorno.
+El perfil con foto, las cuentas reales y un video real deben probarse tras publicar.

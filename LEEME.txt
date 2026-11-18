@@ -1,3 +1,6 @@
+Para esta actualización de diseño, empezá por ACTUALIZAR-CHEFCITO.txt.
+Este documento conserva la guía de activación del análisis de videos.
+
 CHEFCITO - ANALISIS DE VIDEOS PASO A PASO
 
 ACTUALIZACION PARA TU SITIO EXISTENTE
